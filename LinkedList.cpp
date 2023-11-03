@@ -67,7 +67,7 @@ void insertAtPosition(Node* &head, int position, int data){
     }
 }
 
-// Deletion Of Node
+// Function for Deletion Of Node
 void deleteNodeAtPosition(Node* &head, int position){
     Node* toDelete; 
     if(position == 1){
@@ -87,7 +87,7 @@ void deleteNodeAtPosition(Node* &head, int position){
     }
 }
 
-// Printing the Node data
+// Function for Printing the Linked List
 void printNode(Node* &head){
     Node* temp = head;
     while(temp != NULL){
