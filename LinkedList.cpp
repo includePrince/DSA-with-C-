@@ -1,4 +1,4 @@
-//*********************************LINKED LIST*****************************************
+//*******************************************************LINKED LIST********************************************************
 
 // Singly Linked List
 
@@ -116,8 +116,8 @@ class Node{
 };
 
 // Function for insertion in Linked List
-// Insertion At Head
-void insertAtHead(Node* &head, int data){
+// Insertion At Head in DLL
+void insertAtHeadInDLL(Node* &head, int data){
     Node* toInsert = new Node(data);
     if(head == NULL){
         head == toInsert;
@@ -129,8 +129,8 @@ void insertAtHead(Node* &head, int data){
     }
 }
 
-// Insertion At Tail
-void insertAtTail(Node* &tail, int data){
+// Insertion At Tail In DLL
+void insertAtTailInDLL(Node* &tail, int data){
     Node* toInsert = new Node(data);
     if(tail == NULL){
         tail = toInsert;
@@ -143,8 +143,8 @@ void insertAtTail(Node* &tail, int data){
 }
 
 
-// Insertion At any Position
-void insertAtPosition(Node* &head, int position, int data){
+// Insertion At any Position in Doubly Linked List
+void insertAtPositionInDLL(Node* &head, int position, int data){
     Node* toInsert = new Node(data);
     if(position == 1){
         if(head == NULL){
@@ -174,8 +174,8 @@ void insertAtPosition(Node* &head, int position, int data){
     }
 }
 
-// Function for Deletion of Node
-void deleteNodeAtPosition(Node* &head, int position){
+// Function for Deletion of Node in Doubly Linked List
+void deleteNodeAtPositionInDLL(Node* &head, int position){
     Node* toDelete;
     if(position == 1){
         toDelete = head;
@@ -196,12 +196,69 @@ void deleteNodeAtPosition(Node* &head, int position){
     }
 }
 
-// Function for printing Linked List
-void printLinkedList(Node* &head){
+// Function for printing Doubly Linked List
+void printDLL(Node* &head){
     Node* temp = head;
     while(temp != NULL){
         cout<<temp->data<<" ";
         temp = temp->next;
     }
+    cout<<endl;
+}
+
+
+
+// Circular Linked List
+
+// Creating Node
+class Node{
+    public:
+        int data;
+        Node* next;
+    
+    Node(int data){
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+// Function for insertion in Circular Linked List
+void insertNodeInCLL(Node* &head, int positionAfterElement, int data){
+    Node* toInsert = new Node(data);
+    if(head == NULL){
+        head = toInsert;
+        toInsert->next = toInsert;
+    }
+    else{
+        Node* temp = head;
+        while(temp->data != positionAfterElement){
+            temp = temp->next;
+        }
+        toInsert->next = temp->next;
+        temp->next = toInsert;
+    }
+}
+
+// Function for Deletion of Node in Circular Linked List
+void deleteNodeInCLL(Node* &head, int value){
+    Node* temp = head;
+    while(temp->next->data != value){
+        temp = temp->next;
+    }
+    Node* toDelete = temp->next;
+    temp->next = toDelete->next;
+    if(head == toDelete){
+        head = temp;
+    }
+    delete toDelete;
+}
+
+// Function for printing Circular Linked List
+void printCLL(Node* &head){
+    Node* temp = head;
+    do{
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }while(temp != head);
     cout<<endl;
 }
